@@ -1,0 +1,13 @@
+{
+  "configurations": [
+      {
+          "name": "Launch Chrome",
+          "request": "launch",
+          "type": "pwa-chrome",
+          "url": "http://localhost:3000",
+          "webRoot": "${workspaceFolder}"
+      }
+  ]
+}
+
+// /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --remote-debugging-port=9222
