@@ -10,7 +10,7 @@ steps:
       - go version
       - echo -n "latest,v1.0.2,v1.0.1,v1.0.0" > .tags
   - name: build
-    image: docker
+    image: plugins/docker
     environment:
       DOCKER_HOST: "unix:///var/run/docker.sock"
       USERNAME:
@@ -23,13 +23,11 @@ steps:
       password:
         from_secret: dockerpasswd
       repo: hub.docker.com/asppj/01react-demo
+      use_cache: true
+      debug: true
+      insecure: true
+      dry_run: true
       registry: hub.docker.com
       dockerfile: Dockerfile
-      dry_run: true
-      # volumes:
-      # - /var/run/docker.sock:/var/run/docker.sock
-      tags:
-        - latest
-        - "v1.0.2"
-        - "v1.0.1"
-        - "v1.0.0"
+      tags: latest
+
