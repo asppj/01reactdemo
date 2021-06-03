@@ -40,7 +40,7 @@ steps:
     image: docker:dind
     volumes:
     - name: dockersock
-      path: /var/run
+      path: /var/run/docker.sock
     commands:
     - sleep 5 # give docker enough time to start
     - docker ps -a
@@ -55,12 +55,12 @@ steps:
     commands:
     - docker run -d -p 8888:80 --name web-demo --restart always
 
-volumes:
-- name: dockersock
-  host:
-    path: /var/run/docker.sock
-- name: dockersockdind
-  temp: {}
+# volumes:
+# - name: dockersock
+#   host:
+#     path: /var/run/docker.sock
+# - name: dockersockdind
+#   temp: {}
 
 services:
 - name: docker
