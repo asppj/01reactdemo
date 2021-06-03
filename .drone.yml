@@ -26,10 +26,25 @@ steps:
     commands:
       - go env
       - go version
-  - name: webhook
-    image: acme/webhook
+      - echo -n "latest,v1.0.2,v1.0.1,v1.0.0" > .tags
+  - name: docker
+    image: plugins/docker
+    environment:
+      USERNAME:
+        from_secret: dockeruser
+      PASSWORD:
+        from_secret: dockerpasswd
     settings:
-      url: http://www.baidu.com
-      method: post
-      body: |
-        hello world
+      username:
+        from_secret: dockeruser
+      password:
+        from_secret: dockerpasswd
+      mirror: https://hub.docker.com
+      repo: hub.docker.com/asppj/01react-demo
+      registry: hub.docker.com
+      dockerfile: Dockerfile
+      tags:
+        - latest
+        - "v1.0.2"
+        - "v1.0.1"
+        - "v1.0.0"
