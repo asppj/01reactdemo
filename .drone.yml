@@ -27,7 +27,7 @@ steps:
       debug: true
       insecure: true
       dry_run: true
-      registry: hub.docker.com
+      # registry: hub.docker.com
       dockerfile: Dockerfile
       tags: latest
 
