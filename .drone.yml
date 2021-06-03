@@ -52,7 +52,7 @@ steps:
       - name: dockersock
         path: /var/run/docker.sock
     commands:
-      - docker run -d -p 8888:80 --name web-demo --restart always
+      - docker run  -p 8888:80 --name web-demo --restart always -d asppj/01react-demo
 
 volumes:
   - name: dockersock
