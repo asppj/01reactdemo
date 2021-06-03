@@ -15,8 +15,8 @@ steps:
     pull: if-not-exists
     privileged: true
     volumes:
-    - name: dockersock
-      path: /var/run/docker.sock
+      - name: dockersock
+        path: /var/run/docker.sock
     environment:
       # DOCKER_HOST: "unix:///var/run/docker.sock"
       USERNAME:
@@ -30,35 +30,34 @@ steps:
         from_secret: dockerpasswd
       repo: asppj/01react-demo
       use_cache: true
-      # debug: true
+      debug: true
       insecure: true
       dry_run: true
-      # registry: hub.docker.com
       dockerfile: Dockerfile
       # tags: latest
   - name: test
     image: docker:dind
     volumes:
-    - name: dockersock
-      path: /var/run/docker.sock
+      - name: dockersock
+        path: /var/run/docker.sock
     commands:
-    - sleep 5 # give docker enough time to start
-    - docker ps -a
+      - sleep 5 # give docker enough time to start
+      - docker ps -a
 
   - name: deploy
     image: plugins/docker
     pull: if-not-exists
     privileged: true
     volumes:
-    - name: dockersock
-      path: /var/run/docker.sock
+      - name: dockersock
+        path: /var/run/docker.sock
     commands:
-    - docker run -d -p 8888:80 --name web-demo --restart always
+      - docker run -d -p 8888:80 --name web-demo --restart always
 
-# volumes:
-# - name: dockersock
-#   host:
-#     path: /var/run/docker.sock
+volumes:
+  - name: dockersock
+    host:
+      path: /var/run/docker.sock
 # - name: dockersockdind
 #   temp: {}
 
