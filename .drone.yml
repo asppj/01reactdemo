@@ -22,7 +22,7 @@ steps:
         from_secret: dockeruser
       password:
         from_secret: dockerpasswd
-      repo: hub.docker.com/asppj/01react-demo
+      repo: asppj/01react-demo
       use_cache: true
       debug: true
       insecure: true
