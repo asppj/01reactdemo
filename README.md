@@ -1,3 +1,4 @@
+[![Build Status](http://drone.asppj.top/api/badges/asppj/01reactdemo/status.svg)](http://drone.asppj.top/asppj/01reactdemo)
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
