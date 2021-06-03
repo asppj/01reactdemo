@@ -1,26 +1,8 @@
 kind: pipeline
-type: docker # exec, ssh ,kubernetes
+type: exec # exec, ssh ,kubernetes
 name: default
 
 steps:
-  - name: greeting0
-    image: alpine
-    settings:
-      repo: octocat/hello-world
-      username:
-        from_secret: password
-      password:
-        from_secret: password
-    environment:
-      USERNAME:
-        from_secret: password
-      PASSWORD:
-        from_secret: password
-    commands:
-      - echo hello
-      - echo world
-      - echo $USERNAME
-      - ls -al
   - name: build
     image: golang
     commands:
