@@ -25,6 +25,7 @@ steps:
       repo: hub.docker.com/asppj/01react-demo
       registry: hub.docker.com
       dockerfile: Dockerfile
+      dry_run: true
       # volumes:
       # - /var/run/docker.sock:/var/run/docker.sock
       tags:
