@@ -3,14 +3,9 @@ type: docker # exec, ssh ,kubernetes
 name: default
 
 steps:
-  - name: test
-    image: golang
-    commands:
-      - go env
-      - go version
-      - echo -n "latest,v1.0.2,v1.0.1,v1.0.0" > .tags
   - name: build
     image: plugins/docker
+    privileged: true
     environment:
       # DOCKER_HOST: "unix:///var/run/docker.sock"
       USERNAME:
