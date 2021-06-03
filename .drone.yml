@@ -3,15 +3,16 @@ type: docker # exec, ssh ,kubernetes
 name: default
 
 steps:
-  - name: build
+  - name: test
     image: golang
     commands:
       - go env
       - go version
       - echo -n "latest,v1.0.2,v1.0.1,v1.0.0" > .tags
-  - name: docker
-    image: plugins/docker
+  - name: build
+    image: docker
     environment:
+      DOCKER_HOST: "unix:///var/run/docker.sock"
       USERNAME:
         from_secret: dockeruser
       PASSWORD:
@@ -24,6 +25,8 @@ steps:
       repo: hub.docker.com/asppj/01react-demo
       registry: hub.docker.com
       dockerfile: Dockerfile
+      # volumes:
+      # - /var/run/docker.sock:/var/run/docker.sock
       tags:
         - latest
         - "v1.0.2"
