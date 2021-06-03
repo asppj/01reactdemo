@@ -5,7 +5,11 @@ name: default
 steps:
   - name: build
     image: plugins/docker
+    pull: if-not-exists
     privileged: true
+    volumes:
+    - name: dockersock
+      path: /var/run/docker.sock
     environment:
       # DOCKER_HOST: "unix:///var/run/docker.sock"
       USERNAME:
@@ -26,3 +30,7 @@ steps:
       dockerfile: Dockerfile
       tags: latest
 
+volumes:
+- name: dockersock
+  host:
+    path: var/run/docker.sock
