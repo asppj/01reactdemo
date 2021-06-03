@@ -44,6 +44,15 @@ steps:
     - sleep 5 # give docker enough time to start
     - docker ps -a
 
+  - name: deploy
+    image: plugins/docker
+    pull: if-not-exists
+    privileged: true
+    volumes:
+    - name: dockersock
+      path: /var/run/docker.sock
+    commands:
+    - docker run -d -p 8888:80 --name web-demo --restart always
 
 volumes:
 - name: dockersock
