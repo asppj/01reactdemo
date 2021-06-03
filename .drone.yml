@@ -62,10 +62,10 @@ steps:
 # - name: dockersockdind
 #   temp: {}
 
-services:
-- name: docker
-  image: docker:dind
-  privileged: true
-  volumes:
-  - name: dockersockdind
-    path: /var/run
+# services:
+# - name: docker
+#   image: docker:dind
+#   privileged: true
+#   volumes:
+#   - name: dockersockdind
+#     path: /var/run
