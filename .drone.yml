@@ -3,6 +3,12 @@ type: docker # exec, ssh ,kubernetes
 name: default
 
 steps:
+  - name: check
+    image: busybox
+    pull: if-not-exists
+    command:
+      - echo -n "latest,v1.0.2,v1.0.1,v1.0.0" > .tags
+
   - name: build
     image: plugins/docker
     pull: if-not-exists
@@ -23,12 +29,12 @@ steps:
         from_secret: dockerpasswd
       repo: asppj/01react-demo
       use_cache: true
-      debug: true
+      # debug: true
       insecure: true
       dry_run: true
       # registry: hub.docker.com
       dockerfile: Dockerfile
-      tags: latest
+      # tags: latest
 
 volumes:
 - name: dockersock
