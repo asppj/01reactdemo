@@ -6,7 +6,7 @@ steps:
   - name: check
     image: golang
     pull: if-not-exists
-    command:
+    commands:
       - go env
       - echo -n "latest,v1.0.2,v1.0.1,v1.0.0" > .tags
 
