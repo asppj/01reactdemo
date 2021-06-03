@@ -1,5 +1,5 @@
 kind: pipeline
-type: exec # exec, ssh ,kubernetes
+type: docker # exec, ssh ,kubernetes
 name: default
 
 steps:
