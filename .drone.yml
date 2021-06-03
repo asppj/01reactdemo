@@ -39,7 +39,6 @@ steps:
         from_secret: dockeruser
       password:
         from_secret: dockerpasswd
-      mirror: https://hub.docker.com
       repo: hub.docker.com/asppj/01react-demo
       registry: hub.docker.com
       dockerfile: Dockerfile
