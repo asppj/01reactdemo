@@ -36,7 +36,8 @@ steps:
         path: /var/run/docker.sock
     commands:
     #   - docker run  -p 8888:80 --name web-demo --restart always -d asppj/01react-demo
-      - docker service create --name react-demo-web --replicas 3 --publish 5000:80   asppj/01react-demo
+      # - docker service create --name react-demo-web --replicas 3 --publish 5000:80   asppj/01react-demo
+      - docker service update --image asppj/01react-demo:lastest react-demo-web
 
 volumes:
   - name: dockersock

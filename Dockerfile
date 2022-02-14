@@ -24,11 +24,15 @@ RUN npm run build
 # # 运行容器时执行命令，每个 Dokcerfile 只能有一个 CMD 命令，多个的话只有最后一个会执行
 # CMD [ "npm", "start" ]
 
-FROM nginx:stable-alpine
-RUN apk --no-cache add curl
-RUN curl -L https://github.com/a8m/envsubst/releases/download/v1.1.0/envsubst-`uname -s`-`uname -m` -o envsubst && \
-    chmod +x envsubst && \
-    mv envsubst /usr/local/bin
+FROM asppj/nginx-eventbus:v0.0.1
 COPY ./nginx.conf /etc/nginx/nginx.template
-CMD ["/bin/sh", "-c", "envsubst < /etc/nginx/nginx.template > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"]
 COPY --from=builder /app/build /usr/share/nginx/html
+
+
+# FROM scratch as production
+# COPY --from=builder /go/src/github.com/foo/bar/demo .
+# CMD ["./demo"]
+
+# FROM alpine as debug
+# COPY --from=builder /go/src/github.com/foo/bar/demo .
+# CMD ["./demo"]
